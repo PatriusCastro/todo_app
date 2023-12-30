@@ -1,47 +1,131 @@
 @font-face {
-  font-family: 'Internacional';
-  src: url(Internacional-Regular.otf);
+  font-family: Scene;
+  src: url(SceneProBlack.OTF);
+}
+
+:root {
+  --bg-color: #eeeeee;
+  --text-color: #0f0e0e;
+  --second-color: #252323;
+  --main-color: #a7000a;
+  --green: #5D9C59;
+  --big-font: 4rem;
+  --h2-font: 1.6rem;
+  --p-font: 17px;
 }
 
 .App {
+  font-family: "Scene", sans-serif;
+  background: url(assets/bgg.png);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  overflow-x: hidden;
+}
+
+.todo_wrapper {
+  background: url(assets/bgg.png);
+  background-color: var(--second-color);
+  color: var(--bg-color);
+  width: fit-content;
+  box-shadow: 0 10px 10px #25232370;
+  padding: 5vh;
+}
+
+.todo_wrapper h1{
   text-align: center;
 }
 
-.todo_wrapper{
-  background-color: brown;
-  width: 50%;  
-}
-
-.todo_input{
-  padding: 20px;
+.todo_input {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.todo_input label{
-  padding: 10px;
-  font-family: 'Internacional';
-  font-size: 24px;
+.todo_input label {
+  padding: 2px;
+  font-size: 14px;
+  letter-spacing: 2px;
 }
 
-.todo_input_item{
-  margin: 20px; 
+.todo_input_item {
+  margin: 0px 20px;
+  display: flex;
+  flex-direction: column;
 }
 
-.todo_input_item input{
-  background-color: beige;
+.todo_input_item input {
+  background-color: transparent;
+  border: 1px solid #eeeeee;
+  border-radius: 5px;
+  padding: 2px 10px;
+  width: 250px;
+  height: 36px;
+  transition: ease .50s;
+}
+
+.todo_input_item input:focus {
+  background-color: #eeeeee;
   border: 1px solid black;
-  height: 44px;
+  height: 36px;
+  transition: ease .50s;
+
 }
 
-.todo_input_item button{
-  background-color: beige;
-  border: 1px solid black;
-  height: 44px;
+.todo_input_item button {
+  display: block;
+  margin: 0 auto;
+  padding: 8px 20px;
+  background: var(--green);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: var(--bg-color);
+  letter-spacing: 1px;
+  margin-top: 20px;
+  font-size: var(--p-font);
+  bottom: 0;
+  font-weight: 700;
+  transition: ease .50s;
 }
 
-.todo_input_item button:hover{
-  background-color: red;
-  border: 1px solid black;
-  height: 44px;
+.todo_input_item button:hover {
+  color: var(--bg-color);
+  background-color: var(--text-color);
+  cursor: pointer;
+  transition: .5s;
+}
+
+.list_container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn_area{
+  margin-top: 30px;
+}
+
+.btn_area button{
+  margin: 0 auto;
+  padding: 8px 20px;
+  background: var(--green);
+  border: 1px solid transparent;
+  color: var(--bg-color);
+  letter-spacing: 1px;
+  margin-top: 20px;
+  font-size: var(--p-font);
+  font-weight: 700;
+  transition: ease .50s;
+}
+
+.todo_list{
+  background-color: #0f0e0e77;
+  margin: 20px 0;
+  padding: 0 20px;
 }
