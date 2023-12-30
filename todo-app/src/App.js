@@ -30,8 +30,8 @@ function App() {
 
         <div className="list_container">
           <div className="btn_area">
-            <button>Todos</button>
-            <button>Completed</button>
+            <button className="todo_btn">To Do</button>
+            <button className="comp_btn">Completed</button>
           </div>
 
           <div className="todo_list">
