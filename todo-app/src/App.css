@@ -1,6 +1,8 @@
 @font-face {
-  font-family: Scene;
-  src: url(SceneProBlack.OTF);
+  font-family: Montserrat;
+  src: url(Montserrat-VariableFont_wght.ttf);
+  font-family: Sequel;
+  src: url(Sequel\ Sans\ Black\ Disp.otf);
 }
 
 :root {
@@ -11,11 +13,11 @@
   --green: #5D9C59;
   --big-font: 4rem;
   --h2-font: 1.6rem;
-  --p-font: 17px;
+  --p-font: 15px;
 }
 
 .App {
-  font-family: "Scene", sans-serif;
+  font-family: "Sequel", sans-serif;
   background: url(assets/bgg.png);
   display: flex;
   flex-direction: column;
@@ -113,27 +115,14 @@
   margin-top: 40px;
 }
 
-.btn_area .todo_btn{
+.todo_comp_btn{
   margin: 0 auto;
   padding: 8px 20px;
-  background: var(--green);
+  background: gray;
   border: 1px solid transparent;
   color: var(--bg-color);
   letter-spacing: 1px;
   font-size: var(--p-font);
-  font-weight: 700;
-  transition: ease .50s;
-}
-
-.btn_area .comp_btn{
-  margin: 0 auto;
-  padding: 8px 20px;
-  background: var(--text-color);
-  border: 1px solid transparent;
-  color: var(--bg-color);
-  letter-spacing: 1px;
-  font-size: var(--p-font);
-  font-weight: 700;
   transition: ease .50s;
 }
 
@@ -141,4 +130,21 @@
   background-color: #0f0e0e77;
   margin: 20px 0;
   padding: 0 20px;
+}
+
+.todo_list_item p{
+  font-family: "Montserrat", sans-serif;
+  font-size: var(--p-font);
+  font-weight: 400;
+  padding-bottom: 20px;
+}
+
+.todo_list_item h3{
+  font-family: "Sequel", sans-serif;
+  font-size: var(--h2-font);
+  font-weight: 400;
+}
+
+.active {
+  background-color: var(--main-color);
 }
