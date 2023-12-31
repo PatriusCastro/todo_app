@@ -19,7 +19,7 @@
 .App {
   font-family: "Sequel", sans-serif;
   background: url(assets/bgg.png);
-  background-color: var(--bg-color);
+  background-color: #131313;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -67,8 +67,9 @@
 }
 
 .todo_input_item input {
-  background-color: transparent;
-  border: 1px solid #eeeeee;
+  background-color: #c7c7c7;
+  color: #464444;
+  border: 1px solid var(--second-color);
   border-radius: 5px;
   padding: 2px 10px;
   width: 250px;
@@ -76,22 +77,21 @@
   transition: ease .50s;
 }
 
-.todo_input_item input:focus {
+.todo_input_item input:focus{
   background-color: #eeeeee;
-  border: 1px solid black;
+  border: 1px solid transparent;
   height: 36px;
   transition: ease .50s;
-
 }
 
 .todo_input_item button {
   display: block;
   margin: 0 auto;
   padding: 8px 20px;
-  background: var(--green);
+  background: #4d8a48;
   border: 1px solid transparent;
   border-radius: 5px;
-  color: var(--bg-color);
+  color: var(--text-color);
   letter-spacing: 1px;
   margin-top: 20px;
   font-size: var(--p-font);
@@ -101,8 +101,8 @@
 }
 
 .todo_input_item button:hover {
-  color: var(--bg-color);
-  background-color: var(--text-color);
+  color: var(--text-color);
+  background-color: var(--green);
   cursor: pointer;
   transition: .5s;
 }
@@ -128,10 +128,14 @@
   transition: ease .50s;
 }
 
-.todo_list{
-  background-color: #0f0e0e77;
+
+.todo_list_item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin: 20px 0;
-  padding: 0 20px;
+  background-color: #0f0e0e77;
+  padding: 5px 20px;
 }
 
 .todo_list_item p{
@@ -151,10 +155,19 @@
   background-color: var(--main-color);
 }
 
-.todo_list_item {
-  display: flex;
+.todo_list_desc {
+  display: block;
   align-items: center;
-  justify-content: space-between;
+}
+
+.todo_list_item h3 {
+  margin: 10px 0;
+}
+
+.todo_list_item p {
+  padding: 0;
+  margin: 20px;
+  color: #747474;
 }
 
 .todo_list_btn {
@@ -162,9 +175,21 @@
 }
 
 .todo_list_btn .icon{
-  color: #f30615;
+  color: #a7000a;
+  transition: ease-in .3s;
+}
+
+.todo_list_btn .icon:hover{
+  color: #e90110;
+  transition: ease-in .3s;
 }
 
 .todo_list_btn .checkicon{
+  color: #4d8a48;
+  transition: ease-in .3s;
+}
+
+.todo_list_btn .checkicon:hover{
   color: var(--green);
+  transition: ease-in .3s;
 }

@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { IoRemoveCircle } from "react-icons/io5";
 import { IoCheckmarkCircle } from "react-icons/io5";
 import './App.css';
@@ -13,12 +13,28 @@ function App() {
     let newTodoItem = {
       title:newTitle,
       description:newDesc
-    }
+    };
 
     let updatedTodoArr = [...AllTodos];
     updatedTodoArr.push(newTodoItem);
     setTodos(updatedTodoArr);
+    localStorage.setItem('todolist', JSON.stringify(updatedTodoArr))
+  };
+
+  const handleDeleteTodo = (index)=>{
+    let reducedTodo = [...AllTodos];
+    reducedTodo.splice(index, 1);
+    
+    localStorage.setItem('todolist', JSON.stringify(reducedTodo));
+    setTodos(reducedTodo);
   }
+
+  useEffect(()=>{
+    let savedTodoList = JSON.parse(localStorage.getItem('todolist'));
+    if(savedTodoList){
+      setTodos(savedTodoList);
+    }
+  },[])
 
   return (
     <div className="App">
@@ -55,16 +71,15 @@ function App() {
             {AllTodos.map((item, index)=>{
               return(
                 <div className="todo_list_item" key={index}>
-                  <div>
+                  <div className="todo_list_desc">
                     <h3>{item.title}</h3>
                     <p>{item.description}</p>
                   </div>
                   
                   <div className="todo_list_btn">
-                    <IoRemoveCircle className="icon" title="Delete?" />
+                    <IoRemoveCircle className="icon" onClick={()=>handleDeleteTodo(index)} title="Delete?" />
                     <IoCheckmarkCircle className="checkicon" title="Complete?" />
                   </div>
-                  
                 </div>
               )
             })}
