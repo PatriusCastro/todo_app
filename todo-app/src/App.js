@@ -60,9 +60,9 @@ function App() {
                     <p>{item.description}</p>
                   </div>
                   
-                  <div>
+                  <div className="todo_list_btn">
                     <IoRemoveCircle className="icon" title="Delete?" />
-                    <IoCheckmarkCircle className="check-icon" title="Complete?" />
+                    <IoCheckmarkCircle className="checkicon" title="Complete?" />
                   </div>
                   
                 </div>

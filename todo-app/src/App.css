@@ -10,7 +10,7 @@
   --text-color: #0f0e0e;
   --second-color: #252323;
   --main-color: #a7000a;
-  --green: #5D9C59;
+  --green: #7ae072;
   --big-font: 4rem;
   --h2-font: 1.6rem;
   --p-font: 15px;
@@ -19,9 +19,11 @@
 .App {
   font-family: "Sequel", sans-serif;
   background: url(assets/bgg.png);
+  background-color: var(--bg-color);
   display: flex;
   flex-direction: column;
   position: relative;
+  margin: auto 0;
   height: 100vh;
   justify-content: center;
   align-items: center;
@@ -147,4 +149,22 @@
 
 .active {
   background-color: var(--main-color);
+}
+
+.todo_list_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todo_list_btn {
+  font-size: 44px;
+}
+
+.todo_list_btn .icon{
+  color: #f30615;
+}
+
+.todo_list_btn .checkicon{
+  color: var(--green);
 }
