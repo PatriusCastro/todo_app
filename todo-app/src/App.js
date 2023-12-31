@@ -79,7 +79,7 @@ function App() {
         
       <div className="todo_wrapper">
         
-        <h1>My Todos</h1>
+        <h1>This is your To<span>Dos</span></h1>
 
         <div className="todo_input">
 
