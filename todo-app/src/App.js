@@ -1,13 +1,15 @@
 import React,{useEffect, useState} from 'react';
 import { IoRemoveCircle } from "react-icons/io5";
 import { IoCheckmarkCircle } from "react-icons/io5";
+import { RiEditCircleFill } from "react-icons/ri";
 import './App.css';
 
 function App() {
   const [isCompleteScreen, setIsCompleteScreen] = useState(false);
   const [AllTodos, setTodos] = useState([]);
-  const [newTitle, setNewTitle] = useState("");
-  const [newDesc, setNewDesc] = useState("");
+  const [newTitle, setNewTitle] = useState('');
+  const [newDesc, setNewDesc] = useState('');
+  const [completedTodos, setCompletedTodos] = useState([]);
 
   const handleAddTodo = ()=>{
     let newTodoItem = {
@@ -27,14 +29,50 @@ function App() {
     
     localStorage.setItem('todolist', JSON.stringify(reducedTodo));
     setTodos(reducedTodo);
+  };
+
+  const handleComplete = (index)=>{
+    let now = new Date();
+    let dd = now.getDate();
+    let mm = now.getMonth() + 1;
+    let yyyy = now.getFullYear();
+    let h = now.getHours();
+    let m = now.getMinutes();
+    let s = now.getSeconds();
+
+    let completedOn = dd + '-' + mm + '-' + yyyy + ' at ' + h + ':' + m + ':' + s;
+
+    let filteredItem = {
+      ...AllTodos[index],
+      completedOn:completedOn
+    }
+
+    let updatedCompletedArr = [...completedTodos];
+    updatedCompletedArr.push(filteredItem);
+    setCompletedTodos(updatedCompletedArr);
+    handleDeleteTodo(index);
+    localStorage.setItem ('completedTodos', JSON.stringify(updatedCompletedArr))
+  };
+
+  const handleDeleteCompletedTodo = (index)=>{
+    let reducedTodo = [...completedTodos];
+    reducedTodo.splice(index, 1);
+    
+    localStorage.setItem('completed', JSON.stringify(reducedTodo));
+    setCompletedTodos(reducedTodo);
   }
 
   useEffect(()=>{
     let savedTodoList = JSON.parse(localStorage.getItem('todolist'));
+    let savedCompletedList = JSON.parse(localStorage.getItem('completedTodos'));
     if(savedTodoList){
       setTodos(savedTodoList);
     }
-  },[])
+
+    if(savedCompletedList){
+      setCompletedTodos(savedCompletedList);
+    }
+  },[]);
 
   return (
     <div className="App">
@@ -68,7 +106,7 @@ function App() {
           </div>
 
           <div className="todo_list">
-            {AllTodos.map((item, index)=>{
+            {isCompleteScreen===false && AllTodos.map((item, index)=>{
               return(
                 <div className="todo_list_item" key={index}>
                   <div className="todo_list_desc">
@@ -77,12 +115,30 @@ function App() {
                   </div>
                   
                   <div className="todo_list_btn">
+                    <RiEditCircleFill  className="editicon" title="Edit?" />
                     <IoRemoveCircle className="icon" onClick={()=>handleDeleteTodo(index)} title="Delete?" />
-                    <IoCheckmarkCircle className="checkicon" title="Complete?" />
+                    <IoCheckmarkCircle className="checkicon" onClick={()=>handleComplete(index)} title="Complete?" />
                   </div>
                 </div>
-              )
+              );
             })}
+
+            {isCompleteScreen===true && completedTodos.map((item, index)=>{
+              return(
+                <div className="todo_list_item" key={index}>
+                  <div className="todo_list_desc">
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                    <p><small>Completed on: {item.completedOn}</small></p>
+                  </div>
+                  
+                  <div className="todo_list_btn">
+                    <IoRemoveCircle className="icon" onClick={()=>handleDeleteCompletedTodo(index)} title="Delete?" />
+                  </div>
+                </div>
+              );
+            })}
+
           </div>
         </div>
 
